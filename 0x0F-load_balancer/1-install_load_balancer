@@ -1,4 +1,4 @@
-cript that configure HAproxy on your lb-01 server.
+script that configure HAproxy on your lb-01 server.
 
 apt-get update
 apt-get install -y haproxy
@@ -11,6 +11,6 @@ listen 19018-lb-01
         option httpclose
         option forwardfor
         server 111517-web-01 52.72.20.234 check
-        server 19018-web-02 54.160.106.148 check
+        server 111517-web-02 35.175.104.192 check
 " >> /etc/haproxy/haproxy.cfg
 service haproxy restart
