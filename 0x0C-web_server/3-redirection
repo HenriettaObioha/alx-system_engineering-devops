@@ -3,10 +3,12 @@
 # The redirection must be a “301 Moved Permanently”
 
 sudo apt-get -y install nginx
-sudo bash -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
+echo "Hello World!" | sudo tee /var/www/html/index.html
 
-redirect="\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n"
+# using sed command to perfprm redirections
 
-sudo sed -i "53s|.*|$redirect|" /etc/nginx/sites-enabled/default
+string_for_replacement="server_name _;\n\trewrite ^\/\/redirect_me https:\/\/github.com\/HenriettaObioha permanent;"
+
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
 sudo /etc/init.d/nginx restart
