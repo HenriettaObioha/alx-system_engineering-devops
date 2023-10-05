@@ -1,4 +1,4 @@
-#ssh config file
+#ssh_config file
 
 Include /etc/ssh/ssh_config.d/*.conf
 
