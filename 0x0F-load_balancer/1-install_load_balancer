@@ -17,8 +17,8 @@ backend whizonline.tech_backend
     timeout connect  3000
     timeout server  30000
     balance roundrobin
-    server 111517-web-01 52.72.20.234:80 check
-    server 111517-web-01 100.26.133.103:80 check
+    server 111517-web-01 52.86.253.20:80 check
+    server 111517-web-01 52.91.134.192:80 check
 EOT
 
 sudo service haproxy restart
