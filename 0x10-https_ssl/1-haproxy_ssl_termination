@@ -35,9 +35,15 @@ defaults
 
 frontend  whizonline_frontend
         bind *:80
+        bind *:443 ssl crt /etc/letsencrypt/archive/www.whizonline.tech/www.whizonline.tech.pem
+        http-request redirect scheme https unless { ssl_fc }
+        http-request set-header X-forwarded-Proto https
         mode http
         default_backend whizonline_backend
 backend whizonline_backend
         balance roundrobin
-	server 111517-web-01 18.233.62.245:80 check
+        server 111517-web-01 18.233.62.245:80 check
         server 111517-web-02 35.175.63.68:80 check
+
+backend letsencrypt-backend
+    server letsencrypt 127.0.0.1:54321
