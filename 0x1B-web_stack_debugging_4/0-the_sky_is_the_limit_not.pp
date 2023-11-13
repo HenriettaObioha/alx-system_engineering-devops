@@ -10,3 +10,4 @@ exec { 'fix-for-nginx':
 exec { 'nginx-restart':
   command => '/etc/init.d/nginx restart',
   path    => '/etc/init.d/',
+}
